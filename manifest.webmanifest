@@ -1,0 +1,15 @@
+{
+  "name": "Tardy Slip",
+  "short_name": "Tardy Slip",
+  "description": "Plays the 2008 flip-phone edition of Surviving High School from your own copy.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0a0d",
+  "theme_color": "#0b0a0d",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

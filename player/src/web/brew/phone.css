@@ -1,0 +1,39 @@
+/* ---- the BREW handset (brew/phone.ts): a 240x320 screen over the keys the game reads:
+   a D-pad around a big OK, and Back (CLR). Three rows of keys, so the screen takes the
+   rest of the height. ---- */
+.phone {
+  --key-h: clamp(40px, 6.6dvh, 56px);
+  box-sizing: border-box; height: 100dvh; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px; padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom));
+  background: radial-gradient(ellipse at 50% 0%, #2a2630 0%, #0b0a0d 70%); user-select: none; -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.phone-bezel {
+  padding: 8px; border-radius: 14px; background: linear-gradient(#1d1c20, #070708);
+  box-shadow: 0 0 0 1px #000, inset 0 1px 0 #3a3940, 0 8px 24px #000a;
+}
+.phone-screen {
+  display: block; image-rendering: pixelated; image-rendering: crisp-edges; background: #000;
+  width: min(calc(100vw - 36px), calc((100dvh - 3.25 * var(--key-h) - 76px) * 0.75), 720px); aspect-ratio: 3 / 4; height: auto;
+}
+.phone-pad {
+  display: flex; flex-direction: column; gap: 5px; width: min(calc(100vw - 32px), 360px);
+}
+.phone-row { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 6px; }
+.phone-row:nth-child(2) .phone-key { height: calc(var(--key-h) * 1.25); }
+.phone-key {
+  height: var(--key-h); border: 0; border-radius: 12px; padding: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; line-height: 1; color: #ff3b3b; cursor: pointer;
+  background: linear-gradient(#26252a, #141316); box-shadow: inset 0 1px 0 #3d3c43, 0 1px 2px #000;
+  font: 600 clamp(15px, 2.5dvh, 20px) / 1 system-ui, sans-serif; text-shadow: 0 0 6px #ff2a2a88;
+  -webkit-tap-highlight-color: transparent; touch-action: none;
+}
+.phone-key.down { background: linear-gradient(#141316, #1d1c20); box-shadow: inset 0 1px 3px #000; color: #ff7070; }
+.phone-key.blank { visibility: hidden; }
+.phone-key.k-select {
+  border-radius: 999px; font-size: 1.15em; letter-spacing: 0.04em; color: #ffd0d0;
+  background: linear-gradient(#4a2328, #24121a); box-shadow: inset 0 1px 0 #6b3a40, 0 0 0 1px #000, 0 2px 8px #ff2a2a33;
+}
+.phone-key.k-select.down { background: linear-gradient(#24121a, #3a1c21); box-shadow: inset 0 1px 4px #000; color: #fff; }
+.phone-key.k-clr { font-size: 0.8em; }
+.phone-key:focus-visible { outline: 2px solid #ff3b3b; outline-offset: 1px; }
