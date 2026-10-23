@@ -187,6 +187,7 @@ export class PageScreen                       {
   constructor(o             , done                         ) {
     this.o = o;
     this.done = done;
+    this.selected = o.selected ?? 0;
     this.timerLeft = o.timerMs ? o.timerMs - 1 : 0;
   }
   start(c         )       {

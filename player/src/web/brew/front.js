@@ -146,7 +146,7 @@ export class BrewFrontend                     {
     }
     return null;
   }
-          pause()       {
+          pause(selected = 0)       {
     const c = this.ctx;
     if (!c || this.pausePage) return;
     const s = c.strings;
@@ -154,14 +154,16 @@ export class BrewFrontend                     {
     const page             = new PageScreen(
       {
         style: 1, title: s[1] ?? "", items: [s[11] ?? "", soundLabel(), s[0] ?? ""], menu: true, soft: [S.resume, S.select],
-        onClr: () => close(),
+        onClr: () => close(), selected,
       },
       (i) => {
         if (i === 1) {
           this.audio.setMuted(!this.audio.muted);
           if (this.audio.muted) this.audio.stopMusic();
+          const at = this.screens.indexOf(page);
+          if (at >= 0) this.screens.splice(at, 1);
           this.pausePage = null;
-          this.pause();
+          this.pause(1);
           return;
         }
         close();
