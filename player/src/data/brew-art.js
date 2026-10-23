@@ -43,9 +43,9 @@ export function parseSheetDescriptor(d            )                             
   const s8 = () => (need(1), (d[p++] << 24) >> 24);
   const s16 = () => (need(2), (p += 2), ((d[p - 2] << 24) >> 16) | d[p - 1]);
   const flags = u8();
-  const xy = flags & 4 ? u8 : s16;
-  const wh = flags & 2 ? u8 : s16;
-  const hot = flags & 1 ? u8 : s16;
+  const xy = flags & 4 ? s8 : s16;
+  const wh = flags & 2 ? s8 : s16;
+  const hot = flags & 1 ? s8 : s16;
   const comp = flags & 8 ? s8 : s16;
   const frames               = [];
   const nFrames = s16();
